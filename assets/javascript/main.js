@@ -8,7 +8,7 @@ var mymap = L.map('mapid').setView([59.9139, 10.7522], 20);
 
 $(document).ready(function() {
 
-fine valid file types
+// fine valid file types
 var file_types = new Array('.jpeg');
 
 // track the state of the website
@@ -59,28 +59,28 @@ while (true){
                     valid_file = true;
                     break;
                 }
-            }
+            };
 
             // let a user know why they are entering an error state
-            if (!valid_file){
-                err_str += "You tried to upload an invalid file type! You must enter one of:\n");
+            if (!valid_file) {
+                err_str += "You tried to upload an invalid file type! You must enter one of:\n";
                 for (i=0; i<file_types.length; i++){
                     err_str += "${file_types[i]}\n";
                 } 
                 err_str += "\n";
             }
-            else if (valid_file && myFile != null){
+            else if (myFile != null){
                 var reader = new FileReader();
                 reader.readAsDataURL(myFile);
                 file_status = reader.readyState;
-            }
+            };
 
             if (file_status < 2){ // upload failed
                 err_str += "The file failed to upload. Try again!";
                 next_state = ERROR_STATE;
             } else {
                 next_state = LOCATION_WAITING;
-            }
+            };
             break;
         case LOCATION_WAITING:
             console.log("waiting for user to select a file");
